@@ -61,6 +61,46 @@
       line-height: 1.8;
     }
     
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    
+    .profile-item {
+      background: #f8f9fa;
+      padding: 25px;
+      border-radius: 8px;
+      border-left: 4px solid #764ba2;
+    }
+    
+    .profile-item h3 {
+      color: #764ba2;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
+    
+    .profile-item p {
+      line-height: 1.8;
+      color: #555;
+    }
+    
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .tech-tag {
+      background: #667eea;
+      color: white;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 0.9em;
+    }
+    
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -136,11 +176,12 @@
       margin-bottom: 20px;
       border-radius: 5px;
       border-left: 4px solid #667eea;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
     .project-card:hover {
       transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
     }
     
     .project-card h3 {
@@ -174,6 +215,7 @@
     
     .contact-item a:hover {
       color: #764ba2;
+      text-decoration: underline;
     }
     
     footer {
@@ -189,6 +231,10 @@
         font-size: 2em;
       }
       
+      header p {
+        font-size: 1.1em;
+      }
+      
       .experience-header {
         flex-direction: column;
         align-items: flex-start;
@@ -196,6 +242,14 @@
       
       .section {
         padding: 20px;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .profile-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -214,7 +268,37 @@
       <h2>About Me</h2>
       <div class="about-content">
         <p>Motivated Systems Analyst and Functional ERP Consultant from Morocco, specializing in Odoo ERP customization for the construction industry (BTP - Bâtiment et Travaux Publics). I excel at bridging business requirements with technical execution, ensuring that every specification is complete, consistent, and actionable.</p>
-        <p style="margin-top: 15px;">With expertise in translating complex construction workflows into efficient ERP solutions, I collaborate effectively with developers, product owners, and stakeholders to deliver high-quality, scalable systems.</p>
+        <p style="margin-top: 15px;">With expertise in translating complex construction workflows into efficient ERP solutions, I collaborate effectively with developers, product owners, and stakeholders to deliver high-quality, scalable systems that meet business objectives and enhance operational efficiency.</p>
+      </div>
+    </section>
+
+    <!-- Professional Profile Section -->
+    <section class="section">
+      <h2>Professional Profile</h2>
+      <div class="profile-grid">
+        <div class="profile-item">
+          <h3>Client Experience</h3>
+          <p>I have worked with various client types including internal business units, construction companies (BTP sector), small to medium enterprises implementing ERP solutions, and consulting firms specializing in digital transformation projects.</p>
+        </div>
+        
+        <div class="profile-item">
+          <h3>Technology Stack</h3>
+          <div class="tech-tags">
+            <span class="tech-tag">Odoo ERP v19</span>
+            <span class="tech-tag">JIRA</span>
+            <span class="tech-tag">Confluence</span>
+            <span class="tech-tag">Miro</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">Excel</span>
+            <span class="tech-tag">SQL</span>
+          </div>
+        </div>
+        
+        <div class="profile-item">
+          <h3>Industry Focus</h3>
+          <p>Primary expertise in construction (BTP - Bâtiment et Travaux Publics) with deep understanding of supply chain management, project tracking, procurement workflows, and resource allocation specific to construction operations.</p>
+        </div>
       </div>
     </section>
 
@@ -233,7 +317,52 @@
           <li>Created detailed user stories and acceptance criteria for supply chain management modules</li>
           <li>Designed custom interfaces for construction project tracking including métré, bordereau de prix, and progress management</li>
           <li>Collaborated with developers to implement BTP-specific workflows for procurement, subcontracting, and resource allocation</li>
-          <li>Analyzed and optimized business processes to enhance operational efficiency</li>
+          <li>Analyzed and optimized business processes to enhance operational efficiency and system integration</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="experience-title">Systems Analysis Intern</div>
+          <div class="experience-date">2024 - 2025</div>
+        </div>
+        <div class="experience-company">Airbus</div>
+        <ul>
+          <li>Analyzed complex manufacturing and supply chain processes to identify system requirements and improvement opportunities</li>
+          <li>Documented technical specifications and business requirements for aerospace production systems</li>
+          <li>Collaborated with cross-functional teams to map workflows and data flows across engineering and manufacturing departments</li>
+          <li>Supported system integration projects by conducting impact assessments and stakeholder requirement gathering</li>
+          <li>Created process documentation and user guides for internal systems and applications</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="experience-title">Business Systems Analyst Intern</div>
+          <div class="experience-date">2023 - 2024</div>
+        </div>
+        <div class="experience-company">CECI Casablanca</div>
+        <ul>
+          <li>Conducted business process analysis and system requirement gathering for organizational improvement projects</li>
+          <li>Assisted in evaluating and documenting existing business workflows and system capabilities</li>
+          <li>Participated in stakeholder meetings to elicit functional requirements and translate them into technical specifications</li>
+          <li>Supported data analysis activities to inform system enhancement recommendations</li>
+          <li>Contributed to documentation of standard operating procedures and system usage guidelines</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="experience-title">Operations & Systems Intern</div>
+          <div class="experience-date">2022 - 2023</div>
+        </div>
+        <div class="experience-company">Supercerame</div>
+        <ul>
+          <li>Analyzed manufacturing and inventory management processes to identify operational inefficiencies</li>
+          <li>Gathered requirements from production and warehouse teams for potential system improvements</li>
+          <li>Assisted in documenting workflows related to inventory tracking, order management, and production scheduling</li>
+          <li>Supported data collection and reporting activities for operational performance metrics</li>
+          <li>Collaborated with department managers to understand business needs and system requirements</li>
         </ul>
       </div>
     </section>
@@ -282,7 +411,7 @@
             <li>Supply Chain Management</li>
             <li>Inventory & Procurement</li>
             <li>Project Management</li>
-            <li>HR Systems</li>
+            <li>Stakeholder Coordination</li>
           </ul>
         </div>
       </div>
@@ -315,13 +444,13 @@
       </div>
       
       <div class="project-card">
-        <h3>HR Module for Construction Companies</h3>
-        <p>Customized HR management system tailored for the construction industry with specialized fields and regulatory compliance.</p>
+        <h3>Requirements Documentation & System Specification</h3>
+        <p>Led comprehensive requirements analysis and documentation efforts for multi-module ERP implementation, ensuring alignment between business needs and technical delivery.</p>
         <ul>
-          <li>Designed employee records with BTP-specific attributes</li>
-          <li>Implemented contract management and payroll integration</li>
-          <li>Created resource allocation system for human resources and equipment</li>
-          <li>Developed habilitations réglementaires (regulatory qualifications) tracking</li>
+          <li>Conducted stakeholder interviews and workshops to gather detailed functional requirements</li>
+          <li>Created comprehensive system specification documents and user story backlogs</li>
+          <li>Developed acceptance criteria and test scenarios for quality assurance</li>
+          <li>Facilitated communication between business teams and development squads to resolve ambiguities</li>
         </ul>
       </div>
       
