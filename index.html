@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sara Labiad - Systems Analyst Portfolio</title>
+  <title>Sara Labiad - Portfolio Interactif</title>
   <style>
     * {
       margin: 0;
@@ -11,113 +11,525 @@
       box-sizing: border-box;
     }
     
+    :root {
+      --primary-color: #667eea;
+      --secondary-color: #764ba2;
+      --accent-color: #f093fb;
+      --text-dark: #333;
+      --text-light: #666;
+      --bg-light: #f4f4f4;
+      --bg-white: #ffffff;
+      --shadow: 0 4px 20px rgba(0,0,0,0.1);
+      --shadow-hover: 0 8px 30px rgba(102, 126, 234, 0.3);
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
-      color: #333;
-      background: #f4f4f4;
+      color: var(--text-dark);
+      background: var(--bg-light);
+      overflow-x: hidden;
+    }
+    
+    /* Navigation sticky */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    nav.scrolled {
+      padding: 10px 0;
+      background: rgba(255, 255, 255, 0.98);
+    }
+    
+    nav .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    nav .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+    
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      transition: width 0.3s;
+    }
+    
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+    
+    nav ul li a:hover {
+      color: var(--primary-color);
     }
     
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
     }
     
+    /* Hero animé */
     header {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      padding: 80px 0;
+      padding: 150px 0 100px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,58.7C960,64,1056,64,1152,58.7L1200,53.3L1200,120L1152,120C1104,120,1008,120,912,120C816,120,720,120,624,120C528,120,432,120,336,120C240,120,144,120,48,120L0,120Z" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat bottom;
+      background-size: cover;
+      opacity: 0.5;
+      animation: wave 10s ease-in-out infinite;
+    }
+    
+    @keyframes wave {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(-50px); }
+    }
+    
+    header .hero-content {
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1s ease;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     header h1 {
-      font-size: 2.5em;
+      font-size: 3em;
       margin-bottom: 10px;
+      animation: fadeInUp 1s ease 0.2s both;
     }
     
     header p {
-      font-size: 1.3em;
-      opacity: 0.9;
+      font-size: 1.4em;
+      opacity: 0.95;
+      animation: fadeInUp 1s ease 0.4s both;
     }
     
-    .section {
+    header .cta-buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+    
+    .btn {
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    
+    .btn-primary {
       background: white;
-      margin: 30px auto;
-      padding: 40px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      color: var(--primary-color);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    
+    .btn-secondary {
+      border: 2px solid white;
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background: white;
+      color: var(--primary-color);
+    }
+    
+    /* Sections avec animation reveal */
+    .section {
+      background: var(--bg-white);
+      margin: 40px auto;
+      padding: 60px 40px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     
     h2 {
-      color: #667eea;
-      border-bottom: 3px solid #667eea;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
+      color: var(--primary-color);
+      border-bottom: 3px solid var(--primary-color);
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+      font-size: 2em;
+      position: relative;
+      display: inline-block;
     }
     
-    .about-content {
-      font-size: 1.1em;
-      line-height: 1.8;
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 50%;
+      height: 3px;
+      background: var(--secondary-color);
+      animation: expandWidth 0.8s ease forwards;
     }
     
+    @keyframes expandWidth {
+      from { width: 0; }
+      to { width: 50%; }
+    }
+    
+    /* Grille de profil avec hover effects */
     .profile-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 20px;
+      gap: 30px;
+      margin-top: 30px;
     }
     
     .profile-item {
-      background: #f8f9fa;
-      padding: 25px;
-      border-radius: 8px;
-      border-left: 4px solid #764ba2;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 30px;
+      border-radius: 12px;
+      border-left: 5px solid var(--secondary-color);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .profile-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+      transition: left 0.5s;
+    }
+    
+    .profile-item:hover::before {
+      left: 100%;
+    }
+    
+    .profile-item:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-hover);
+      border-left-width: 8px;
     }
     
     .profile-item h3 {
-      color: #764ba2;
+      color: var(--secondary-color);
       margin-bottom: 15px;
+      font-size: 1.3em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .profile-item h3::before {
+      content: '▸';
+      color: var(--primary-color);
       font-size: 1.2em;
     }
     
-    .profile-item p {
-      line-height: 1.8;
-      color: #555;
-    }
-    
+    /* Tags technologiques */
     .tech-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 15px;
-    }
-    
-    .tech-tag {
-      background: #667eea;
-      color: white;
-      padding: 6px 15px;
-      border-radius: 20px;
-      font-size: 0.9em;
-    }
-    
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      gap: 12px;
       margin-top: 20px;
     }
     
-    .skill-category {
+    .tech-tag {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 8px 18px;
+      border-radius: 25px;
+      font-size: 0.9em;
+      transition: all 0.3s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tech-tag::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+    }
+    
+    .tech-tag:hover::before {
+      width: 200px;
+      height: 200px;
+    }
+    
+    .tech-tag:hover {
+      transform: scale(1.1) rotate(-2deg);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    /* Timeline d'expérience */
+    .experience-timeline {
+      position: relative;
+      padding-left: 50px;
+      margin-top: 40px;
+    }
+    
+    .experience-timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    }
+    
+    .experience-item {
+      margin-bottom: 40px;
+      padding: 25px;
       background: #f8f9fa;
-      padding: 20px;
-      border-radius: 5px;
-      border-left: 4px solid #667eea;
+      border-radius: 12px;
+      border-left: 5px solid var(--secondary-color);
+      position: relative;
+      transition: all 0.3s;
+    }
+    
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      left: -58px;
+      top: 30px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      border: 4px solid white;
+      box-shadow: 0 0 0 3px var(--primary-color);
+      transition: all 0.3s;
+    }
+    
+    .experience-item:hover {
+      transform: translateX(10px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .experience-item:hover::before {
+      transform: scale(1.3);
+      background: var(--secondary-color);
+      box-shadow: 0 0 0 3px var(--secondary-color);
+    }
+    
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .experience-title {
+      font-size: 1.4em;
+      color: var(--secondary-color);
+      font-weight: bold;
+    }
+    
+    .experience-date {
+      color: var(--text-light);
+      font-style: italic;
+      font-size: 0.95em;
+      background: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+    }
+    
+    .experience-company {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 1.1em;
+      margin-bottom: 15px;
+    }
+    
+    .experience-item ul {
+      margin-left: 20px;
+      margin-top: 15px;
+    }
+    
+    .experience-item ul li {
+      margin-bottom: 10px;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+    
+    /* Cartes de projets interactives */
+    .project-card {
+      background: #f8f9fa;
+      padding: 30px;
+      margin-bottom: 25px;
+      border-radius: 12px;
+      border-left: 5px solid var(--primary-color);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::after {
+      content: '→';
+      position: absolute;
+      right: 30px;
+      top: 30px;
+      font-size: 2em;
+      color: var(--primary-color);
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.3s;
+    }
+    
+    .project-card:hover {
+      transform: translateX(10px) scale(1.02);
+      box-shadow: var(--shadow-hover);
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+    
+    .project-card:hover::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .project-card h3 {
+      color: var(--secondary-color);
+      margin-bottom: 15px;
+      font-size: 1.4em;
+    }
+    
+    .project-card p {
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+    
+    .project-card ul {
+      margin-left: 20px;
+      margin-top: 15px;
+    }
+    
+    .project-card ul li {
+      margin-bottom: 10px;
+      color: var(--text-light);
+    }
+    
+    /* Compétences avec barres de progression */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .skill-category {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 25px;
+      border-radius: 12px;
+      border-left: 5px solid var(--primary-color);
+      transition: all 0.3s;
+    }
+    
+    .skill-category:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
     }
     
     .skill-category h3 {
-      color: #764ba2;
-      margin-bottom: 10px;
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .skill-category h3::before {
+      content: '●';
+      color: var(--primary-color);
     }
     
     .skill-category ul {
@@ -125,108 +537,114 @@
     }
     
     .skill-category li {
-      padding: 5px 0;
-      padding-left: 20px;
+      padding: 8px 0;
+      padding-left: 25px;
       position: relative;
+      color: var(--text-light);
+      transition: all 0.3s;
     }
     
     .skill-category li:before {
       content: "▸";
       position: absolute;
       left: 0;
-      color: #667eea;
+      color: var(--primary-color);
+      transition: all 0.3s;
     }
     
-    .experience-item {
-      margin-bottom: 30px;
-      padding: 20px;
-      background: #f8f9fa;
-      border-radius: 5px;
-      border-left: 4px solid #764ba2;
+    .skill-category li:hover {
+      color: var(--primary-color);
+      padding-left: 30px;
     }
     
-    .experience-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-    
-    .experience-title {
-      font-size: 1.3em;
-      color: #764ba2;
-      font-weight: bold;
-    }
-    
-    .experience-date {
-      color: #666;
-      font-style: italic;
-    }
-    
-    .experience-company {
-      color: #667eea;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    
-    .project-card {
-      background: #f8f9fa;
-      padding: 25px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      border-left: 4px solid #667eea;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .project-card:hover {
+    .skill-category li:hover:before {
       transform: translateX(5px);
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
     }
     
-    .project-card h3 {
-      color: #764ba2;
-      margin-bottom: 10px;
-    }
-    
-    .project-card ul {
-      margin-left: 20px;
-      margin-top: 10px;
-    }
-    
+    /* Contact avec icônes */
     .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      font-size: 1.1em;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
     }
     
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+    
+    .contact-item:hover {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .contact-item strong {
+      font-size: 1.5em;
     }
     
     .contact-item a {
-      color: #667eea;
+      color: var(--primary-color);
       text-decoration: none;
       transition: color 0.3s;
+      word-break: break-word;
     }
     
-    .contact-item a:hover {
-      color: #764ba2;
-      text-decoration: underline;
+    .contact-item:hover a {
+      color: white;
+    }
+    
+    /* Bouton scroll to top */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.5em;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .scroll-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
     }
     
     footer {
       text-align: center;
-      padding: 20px;
-      background: #333;
+      padding: 30px;
+      background: #2c3e50;
       color: white;
-      margin-top: 40px;
+      margin-top: 50px;
     }
     
+    /* Responsive */
     @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+      
       header h1 {
         font-size: 2em;
       }
@@ -241,245 +659,414 @@
       }
       
       .section {
-        padding: 20px;
+        padding: 30px 20px;
       }
       
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-      
+      .skills-grid,
       .profile-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .experience-timeline {
+        padding-left: 30px;
+      }
+      
+      .experience-timeline::before {
+        left: 5px;
+      }
+      
+      .experience-item::before {
+        left: -48px;
+      }
+      
+      header .cta-buttons {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
 </head>
 <body>
-  <header>
+  <!-- Navigation sticky -->
+  <nav id="navbar">
     <div class="container">
+      <div class="logo">SL</div>
+      <ul>
+        <li><a href="#about">À Propos</a></li>
+        <li><a href="#experience">Expérience</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header>
+    <div class="hero-content">
       <h1>Sara Labiad</h1>
-      <p>Functional ERP Consultant | Systems Analyst | Odoo Specialist</p>
+      <p>Consultante Fonctionnelle ERP | Analyste Systèmes | Spécialiste Odoo</p>
+      <div class="cta-buttons">
+        <a href="#contact" class="btn btn-primary">Me Contacter</a>
+        <a href="#projects" class="btn btn-secondary">Voir Mes Projets</a>
+      </div>
     </div>
   </header>
 
   <div class="container">
-    <!-- About Section -->
-    <section class="section">
-      <h2>About Me</h2>
+    <!-- À Propos -->
+    <section class="section" id="about">
+      <h2>À Propos</h2>
       <div class="about-content">
-        <p>Motivated Systems Analyst and Functional ERP Consultant from Morocco, specializing in Odoo ERP customization for the construction industry. I excel at bridging business requirements with technical execution, ensuring that every specification is complete, consistent, and actionable.</p>
-        <p style="margin-top: 15px;">With expertise in translating complex construction workflows into efficient ERP solutions, I collaborate effectively with developers, product owners, and stakeholders to deliver high-quality, scalable systems that meet business objectives and enhance operational efficiency.</p>
+        <p>Ingénieure récemment diplômée spécialisée en transformation digitale et systèmes d'information d'entreprise, je possède une forte capacité d'analyse des besoins métiers et de pilotage de projets d'intégration ERP. Basée au Maroc, j'excelle dans la personnalisation d'Odoo pour l'industrie de la construction (BTP), en traduisant des workflows complexes en solutions ERP efficaces.</p>
+        <p style="margin-top: 15px;">Mon expertise couvre l'accompagnement des organisations dans leur transformation digitale, la coordination d'équipes pluridisciplinaires, et la livraison de systèmes évolutifs qui répondent aux objectifs métiers tout en améliorant l'efficacité opérationnelle.</p>
       </div>
-    </section>
 
-    <!-- Professional Profile Section -->
-    <section class="section">
-      <h2>Professional Profile</h2>
       <div class="profile-grid">
         <div class="profile-item">
-          <h3>Client Experience</h3>
-          <p>I have worked with various client types including internal business units, construction companies, small to medium enterprises implementing ERP solutions, and consulting firms specializing in digital transformation projects.</p>
+          <h3>Expérience Client</h3>
+          <p>J'ai travaillé avec diverses typologies de clients : unités métiers internes, entreprises de construction, PME implémentant des solutions ERP, et cabinets de conseil spécialisés en transformation digitale.</p>
         </div>
         
         <div class="profile-item">
-          <h3>Technology Stack</h3>
+          <h3>Stack Technologique</h3>
           <div class="tech-tags">
             <span class="tech-tag">Odoo ERP v19</span>
+            <span class="tech-tag">Workday HCM</span>
             <span class="tech-tag">JIRA</span>
             <span class="tech-tag">Confluence</span>
             <span class="tech-tag">Miro</span>
             <span class="tech-tag">Python</span>
+            <span class="tech-tag">SQL</span>
             <span class="tech-tag">Git</span>
             <span class="tech-tag">Excel</span>
-            <span class="tech-tag">SQL</span>
           </div>
         </div>
         
         <div class="profile-item">
-          <h3>Odoo Modules Expertise</h3>
-          <p>Specialized experience with Odoo modules including Manufacturing, Inventory Management, Sales, Procurement, and Construction-specific customizations for comprehensive project management solutions.</p>
+          <h3>Expertise Modules</h3>
+          <p>Expérience spécialisée dans les modules Odoo : Fabrication, Gestion des Stocks, Ventes, Achats, et personnalisations BTP pour une gestion de projet complète. Connaissance des processus SIRH via Workday.</p>
         </div>
       </div>
     </section>
 
-    <!-- Experience Section -->
-    <section class="section">
-      <h2>Professional Experience</h2>
+    <!-- Expérience -->
+    <section class="section" id="experience">
+      <h2>Expérience Professionnelle</h2>
       
-      <div class="experience-item">
-        <div class="experience-header">
-          <div class="experience-title">Functional Consultant - Supply Chain & Construction</div>
-          <div class="experience-date">September 2025 - November 2025</div>
+      <div class="experience-timeline">
+        <div class="experience-item">
+          <div class="experience-header">
+            <div class="experience-title">Consultante Fonctionnelle Odoo</div>
+            <div class="experience-date">Sept 2025 - Présent</div>
+          </div>
+          <div class="experience-company">D-Business Consulting</div>
+          <ul>
+            <li>Accompagnement de clients dans la transformation digitale via implémentation Odoo ERP v19</li>
+            <li>Analyse des besoins métiers et cartographie des processus existants</li>
+            <li>Pilotage de projets d'intégration : planification, coordination équipes, suivi des risques et délais</li>
+            <li>Rédaction de spécifications fonctionnelles détaillées et cahiers des charges</li>
+            <li>Configuration et paramétrage : mappings, workflows automatisés, champs calculés, rapports personnalisés</li>
+            <li>Coordination avec équipes IT, métiers et prestataires pour garantir l'alignement et la qualité</li>
+            <li>Tests fonctionnels, validation et mise en production avec suivi des performances</li>
+            <li>Conduite du changement : formation utilisateurs, support post-déploiement</li>
+          </ul>
         </div>
-        <div class="experience-company">D-Business Consulting</div>
-        <ul>
-          <li>Developed comprehensive business requirements for Odoo ERP v19 implementation in construction sector</li>
-          <li>Created detailed user stories and acceptance criteria for supply chain management modules</li>
-          <li>Designed custom interfaces for construction project tracking including quantity surveying, price schedules, and progress management</li>
-          <li>Collaborated with developers to implement construction-specific workflows for procurement, subcontracting, and resource allocation</li>
-          <li>Analyzed and optimized business processes to enhance operational efficiency and system integration</li>
-        </ul>
-      </div>
 
-      <div class="experience-item">
-        <div class="experience-header">
-          <div class="experience-title">Systems Analysis Intern</div>
-          <div class="experience-date">2024 - 2025</div>
+        <div class="experience-item">
+          <div class="experience-header">
+            <div class="experience-title">Stagiaire Consultante - Gestion de Projet</div>
+            <div class="experience-date">Mars 2025 - Juillet 2025</div>
+          </div>
+          <div class="experience-company">Airbus</div>
+          <ul>
+            <li>Conduite d'une mission de conseil interne en coordination avec équipes opérationnelles et management</li>
+            <li>Analyse et diagnostic des processus métiers avec méthodologie structurée</li>
+            <li>Identification et quantification des opportunités d'amélioration et de transformation</li>
+            <li>Élaboration de recommandations actionnables avec roadmap de déploiement</li>
+            <li>Présentation des conclusions et plan d'action aux parties prenantes</li>
+            <li>Gestion de projet en autonomie avec respect des délais et exigences</li>
+          </ul>
         </div>
-        <div class="experience-company">Airbus</div>
-        <ul>
-          <li>Analyzed complex manufacturing and supply chain processes to identify system requirements and improvement opportunities</li>
-          <li>Documented technical specifications and business requirements for aerospace production systems</li>
-          <li>Collaborated with cross-functional teams to map workflows and data flows across engineering and manufacturing departments</li>
-          <li>Supported system integration projects by conducting impact assessments and stakeholder requirement gathering</li>
-          <li>Created process documentation and user guides for internal systems and applications</li>
-        </ul>
-      </div>
 
-      <div class="experience-item">
-        <div class="experience-header">
-          <div class="experience-title">Business Systems Analyst Intern</div>
-          <div class="experience-date">2023 - 2024</div>
+        <div class="experience-item">
+          <div class="experience-header">
+            <div class="experience-title">Stagiaire Systèmes d'Information - SIRH</div>
+            <div class="experience-date">Été 2024</div>
+          </div>
+          <div class="experience-company">CECI Casablanca</div>
+          <ul>
+            <li>Familiarisation avec les systèmes d'information RH (SIRH) et l'architecture des bases de données employés</li>
+            <li>Observation des processus de gestion de la paie, des contrats et des dossiers employés</li>
+            <li>Participation aux opérations de support utilisateurs RH et résolution d'incidents système</li>
+            <li>Apprentissage des workflows d'intégration RH : onboarding, gestion des habilitations et accès</li>
+            <li>Documentation des procédures techniques et mise à jour des guides utilisateurs</li>
+            <li>Suivi des tickets dans l'outil de gestion et contribution à l'amélioration des processus support</li>
+          </ul>
         </div>
-        <div class="experience-company">CECI Casablanca</div>
-        <ul>
-          <li>Conducted business process analysis and system requirement gathering for organizational improvement projects</li>
-          <li>Assisted in evaluating and documenting existing business workflows and system capabilities</li>
-          <li>Participated in stakeholder meetings to elicit functional requirements and translate them into technical specifications</li>
-          <li>Supported data analysis activities to inform system enhancement recommendations</li>
-          <li>Contributed to documentation of standard operating procedures and system usage guidelines</li>
-        </ul>
-      </div>
 
-      <div class="experience-item">
-        <div class="experience-header">
-          <div class="experience-title">Operations & Systems Intern</div>
-          <div class="experience-date">2022 - 2023</div>
+        <div class="experience-item">
+          <div class="experience-header">
+            <div class="experience-title">Stage Ouvrier - Production</div>
+            <div class="experience-date">Été 2023</div>
+          </div>
+          <div class="experience-company">Supercerame</div>
+          <ul>
+            <li>Immersion dans l'environnement de production industrielle</li>
+            <li>Observation des processus de fabrication et de gestion des stocks</li>
+            <li>Compréhension des flux logistiques et de la chaîne de production</li>
+            <li>Sensibilisation aux enjeux de qualité et de sécurité industrielle</li>
+          </ul>
         </div>
-        <div class="experience-company">Supercerame</div>
-        <ul>
-          <li>Analyzed manufacturing and inventory management processes to identify operational inefficiencies</li>
-          <li>Gathered requirements from production and warehouse teams for potential system improvements</li>
-          <li>Assisted in documenting workflows related to inventory tracking, order management, and production scheduling</li>
-          <li>Supported data collection and reporting activities for operational performance metrics</li>
-          <li>Collaborated with department managers to understand business needs and system requirements</li>
-        </ul>
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="section">
-      <h2>Technical Skills</h2>
+    <!-- Compétences -->
+    <section class="section" id="skills">
+      <h2>Compétences Techniques</h2>
       <div class="skills-grid">
         <div class="skill-category">
-          <h3>ERP & Systems</h3>
+          <h3>ERP & Systèmes</h3>
           <ul>
             <li>Odoo ERP (v19)</li>
-            <li>Business Process Analysis</li>
-            <li>Requirements Gathering</li>
-            <li>System Integration</li>
-            <li>Module Customization</li>
+            <li>Workday HCM (Concepts SIRH)</li>
+            <li>Analyse des Processus Métiers</li>
+            <li>Recueil des Besoins</li>
+            <li>Intégration de Systèmes</li>
+            <li>Personnalisation de Modules</li>
           </ul>
         </div>
         
         <div class="skill-category">
-          <h3>Analysis & Documentation</h3>
+          <h3>Analyse & Documentation</h3>
           <ul>
-            <li>User Story Writing</li>
-            <li>Acceptance Criteria</li>
-            <li>Process Mapping</li>
-            <li>Technical Documentation</li>
-            <li>Impact Assessment</li>
+            <li>Rédaction User Stories</li>
+            <li>Critères d'Acceptation</li>
+            <li>Cartographie des Processus</li>
+            <li>Documentation Technique</li>
+            <li>Analyse d'Impact</li>
+            <li>Cahiers des Charges</li>
           </ul>
         </div>
         
         <div class="skill-category">
-          <h3>Tools & Technologies</h3>
+          <h3>Outils & Technologies</h3>
           <ul>
             <li>JIRA & Confluence</li>
             <li>Miro</li>
-            <li>Excel / Spreadsheets</li>
+            <li>Excel / Tableurs Avancés</li>
             <li>Git Version Control</li>
-            <li>Python (Basic)</li>
+            <li>Python (Base)</li>
+            <li>SQL</li>
           </ul>
         </div>
         
         <div class="skill-category">
-          <h3>Odoo Modules</h3>
+          <h3>Modules Odoo</h3>
           <ul>
-            <li>Manufacturing</li>
-            <li>Inventory Management</li>
-            <li>Sales</li>
-            <li>Procurement</li>
-            <li>Construction</li>
+            <li>Fabrication</li>
+            <li>Gestion des Stocks</li>
+            <li>Ventes</li>
+            <li>Achats</li>
+            <li>Construction (BTP)</li>
+            <li>Gestion de Projets</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>SIRH & Gestion RH</h3>
+          <ul>
+            <li>Processus HCM</li>
+            <li>Gestion de la Paie</li>
+            <li>Onboarding</li>
+            <li>Gestion des Contrats</li>
+            <li>Workflows RH Automatisés</li>
+            <li>Reporting RH</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>Méthodologies</h3>
+          <ul>
+            <li>Agile / Scrum</li>
+            <li>Pilotage de Projets</li>
+            <li>Conduite du Changement</li>
+            <li>Tests Fonctionnels</li>
+            <li>Amélioration Continue</li>
+            <li>Coordination d'Équipes</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="section">
-      <h2>Key Projects</h2>
+    <!-- Projets -->
+    <section class="section" id="projects">
+      <h2>Projets Clés & Réalisations</h2>
       
       <div class="project-card">
-        <h3>Construction ERP Workflow Integration</h3>
-        <p>Designed and implemented comprehensive Odoo modules for construction project management, integrating quantity surveying with procurement workflows.</p>
+        <h3>Projet d'Intégration ERP Multi-Modules</h3>
+        <p>Pilotage et coordination de l'implémentation complète de modules interconnectés pour D-Business Consulting.</p>
         <ul>
-          <li>Created automated workflows from quantity surveying to purchase orders</li>
-          <li>Managed supplies versus reusable equipment classification</li>
-          <li>Integrated sub-contractor management and rental tracking</li>
-          <li>Developed smart buttons for planning and work order generation</li>
+          <li>Gestion de projet d'intégration avec coordination de plusieurs équipes (fonctionnel, technique, métier)</li>
+          <li>Analyse approfondie des besoins métiers et rédaction de spécifications fonctionnelles complètes</li>
+          <li>Conception de workflows automatisés et processus d'intégration entre modules</li>
+          <li>Configuration : mappings complexes, étapes de business processes, champs calculés personnalisés</li>
+          <li>Création de rapports personnalisés et tableaux de bord pour le suivi des KPIs</li>
+          <li>Gestion des tickets d'incidents dans JIRA avec priorisation et suivi jusqu'à résolution</li>
         </ul>
       </div>
       
       <div class="project-card">
-        <h3>Construction Progress Tracking System</h3>
-        <p>Developed custom interfaces for comprehensive project tracking including progress documentation, payment certificates, and progress reporting processes.</p>
+        <h3>Intégration Workflow Construction ERP</h3>
+        <p>Conception et implémentation de modules Odoo complets pour la gestion de projets de construction, intégrant le métré avec les workflows d'achat.</p>
         <ul>
-          <li>Created progress justification interface with document and image upload capability</li>
-          <li>Designed work package management system with auto-generated IDs and incremental numbering</li>
-          <li>Implemented construction hierarchy for works, packages, and site organization</li>
-          <li>Integrated price schedule extraction to project costs</li>
+          <li>Création de workflows automatisés du métré vers les bons de commande</li>
+          <li>Gestion de la classification fournitures vs équipements réutilisables</li>
+          <li>Intégration de la gestion des sous-traitants et du suivi des locations</li>
+          <li>Développement de boutons intelligents pour la planification et génération d'ordres de service</li>
         </ul>
       </div>
       
       <div class="project-card">
-        <h3>Requirements Documentation & System Specification</h3>
-        <p>Led comprehensive requirements analysis and documentation efforts for multi-module ERP implementation, ensuring alignment between business needs and technical delivery.</p>
+        <h3>Système de Suivi d'Avancement Construction</h3>
+        <p>Développement d'interfaces personnalisées pour le suivi complet de projets incluant documentation d'avancement, décomptes et processus de reporting.</p>
         <ul>
-          <li>Conducted stakeholder interviews and workshops to gather detailed functional requirements</li>
-          <li>Created comprehensive system specification documents and user story backlogs</li>
-          <li>Developed acceptance criteria and test scenarios for quality assurance</li>
-          <li>Facilitated communication between business teams and development squads to resolve ambiguities</li>
+          <li>Création d'interface de justification d'avancement avec upload de documents et images</li>
+          <li>Conception du système de gestion des lots de travaux avec IDs auto-générés et numérotation incrémentale</li>
+          <li>Implémentation de la hiérarchie construction pour ouvrages, lots et organisation de chantier</li>
+          <li>Intégration de l'extraction du bordereau de prix vers les coûts de projet</li>
+        </ul>
+      </div>
+
+      <div class="project-card">
+        <h3>Mission de Conseil en Transformation - Airbus</h3>
+        <p>Diagnostic, recommandations et pilotage du changement pour l'optimisation des processus opérationnels.</p>
+        <ul>
+          <li>Conduite d'une mission de conseil en coordination avec équipes opérationnelles et management</li>
+          <li>Diagnostic des processus métiers et identification des axes d'amélioration</li>
+          <li>Élaboration de recommandations stratégiques avec roadmap de mise en œuvre</li>
+          <li>Présentation des conclusions aux parties prenantes et validation du plan d'action</li>
         </ul>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section">
-      <h2>Contact</h2>
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <h2>Me Contacter</h2>
       <div class="contact-info">
         <div class="contact-item">
-          <strong>📧 Email:</strong> 
-          <a href="mailto:saralabiad35@gmail.com">saralabiad35@gmail.com</a>
+          <strong>📧</strong>
+          <div>
+            <strong>Email:</strong><br>
+            <a href="mailto:saralabiad35@gmail.com">saralabiad35@gmail.com</a>
+          </div>
         </div>
         <div class="contact-item">
-          <strong>💼 LinkedIn:</strong> 
-          <a href="https://www.linkedin.com/in/sara-labiad" target="_blank">linkedin.com/in/sara-labiad</a>
+          <strong>📱</strong>
+          <div>
+            <strong>Téléphone:</strong><br>
+            <a href="tel:+212655623218">+212 655-623-218</a>
+          </div>
         </div>
         <div class="contact-item">
-          <strong>🌐 GitHub:</strong> 
-          <a href="https://github.com/SaraLabiad" target="_blank">github.com/SaraLabiad</a>
+          <strong>💼</strong>
+          <div>
+            <strong>LinkedIn:</strong><br>
+            <a href="https://www.linkedin.com/in/sara-labiad" target="_blank">linkedin.com/in/sara-labiad</a>
+          </div>
         </div>
         <div class="contact-item">
-          <strong>📍 Location:</strong> Morocco (GMT+1)
+          <strong>🌐</strong>
+          <div>
+            <strong>GitHub:</strong><br>
+            <a href="https://github.com/SaraLabiad" target="_blank">github.com/SaraLabiad</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <strong>📍</strong>
+          <div>
+            <strong>Localisation:</strong><br>
+            Casablanca, Morocco (GMT+1)
+          </div>
+        </div>
+        <div class="contact-item">
+          <strong>🎓</strong>
+          <div>
+            <strong>Formation:</strong><br>
+            Ingénieur d'État - ESITH
+          </div>
         </div>
       </div>
     </section>
   </div>
 
+  <button class="scroll-top" id="scrollTop">↑</button>
+
   <footer>
-    <p>&copy; 2025 Sara Labiad | Systems Analyst & Functional ERP Consultant</p>
+    <p>&copy; 2025 Sara Labiad | Consultante Fonctionnelle ERP & Analyste Systèmes</p>
+    <p style="margin-top: 10px; opacity: 0.8;">Spécialisée en Transformation Digitale & Systèmes d'Information</p>
   </footer>
+
+  <script>
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Smooth scroll pour les liens d'ancrage
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offsetTop = target.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
