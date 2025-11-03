@@ -3,7 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sara Labiad - Portfolio Interactif</title>
+  <meta name="description" content="Sara Labiad - Consultante Fonctionnelle ERP, Spécialiste Odoo & Transformation Digitale. Portfolio professionnel complet avec projets BTP et expertise SIRH."/>
+  <meta name="keywords" content="ERP, Odoo, Consultant, Transformation Digitale, SIRH, Workday, BTP, Construction, Maroc"/>
+  <meta name="author" content="Sara Labiad"/>
+  <meta property="og:title" content="Sara Labiad - Consultante ERP & Analyste Systèmes"/>
+  <meta property="og:description" content="Portfolio de Sara Labiad - Experte en implémentation Odoo, transformation digitale et gestion de projets"/>
+  <meta property="og:image" content="https://saralabiad.github.io/og-image.png"/>
+  
+  <title>Sara Labiad - Portfolio Professionnel | Consultante ERP & Analyste Systèmes</title>
+  
+  <link rel="canonical" href="https://saralabiad.github.io"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23667eea'>SL</text></svg>">
+  
   <style>
     * {
       margin: 0;
@@ -15,88 +26,102 @@
       --primary-color: #667eea;
       --secondary-color: #764ba2;
       --accent-color: #f093fb;
-      --text-dark: #333;
-      --text-light: #666;
-      --bg-light: #f4f4f4;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --danger-color: #ef4444;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --text-lighter: #9ca3af;
+      --bg-light: #f9fafb;
+      --bg-lighter: #f3f4f6;
       --bg-white: #ffffff;
-      --shadow: 0 4px 20px rgba(0,0,0,0.1);
-      --shadow-hover: 0 8px 30px rgba(102, 126, 234, 0.3);
+      --border-color: #e5e7eb;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+      --shadow-hover: 0 12px 40px rgba(102, 126, 234, 0.25);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
     }
     
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 80px;
     }
     
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       line-height: 1.6;
       color: var(--text-dark);
       background: var(--bg-light);
       overflow-x: hidden;
     }
     
-    /* Navigation sticky */
+    /* ===== NAVIGATION ===== */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
       background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(15px);
       z-index: 1000;
       padding: 15px 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 1px solid var(--border-color);
     }
     
     nav.scrolled {
       padding: 10px 0;
       background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow);
     }
     
     nav .container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     
     nav .logo {
-      font-size: 1.5em;
-      font-weight: bold;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      font-size: 1.8em;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      letter-spacing: -1px;
     }
     
     nav ul {
       display: flex;
       list-style: none;
-      gap: 30px;
+      gap: 40px;
     }
     
     nav ul li a {
       text-decoration: none;
       color: var(--text-dark);
-      font-weight: 500;
-      transition: color 0.3s;
+      font-weight: 600;
+      font-size: 0.95em;
+      transition: all 0.3s;
       position: relative;
+      padding: 8px 0;
     }
     
     nav ul li a::after {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: 0;
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--primary-color);
-      transition: width 0.3s;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    nav ul li a:hover::after {
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
       width: 100%;
     }
     
@@ -105,16 +130,16 @@
     }
     
     .container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 0 40px;
     }
     
-    /* Hero animé */
+    /* ===== HEADER/HERO ===== */
     header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
       color: white;
-      padding: 150px 0 100px;
+      padding: 180px 0 120px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -124,31 +149,42 @@
     header::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,58.7C960,64,1056,64,1152,58.7L1200,53.3L1200,120L1152,120C1104,120,1008,120,912,120C816,120,720,120,624,120C528,120,432,120,336,120C240,120,144,120,48,120L0,120Z" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat bottom;
-      background-size: cover;
-      opacity: 0.5;
-      animation: wave 10s ease-in-out infinite;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      animation: float 20s ease-in-out infinite;
     }
     
-    @keyframes wave {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(-50px); }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -5%;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      animation: float 25s ease-in-out infinite reverse;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-30px) scale(1.1); }
     }
     
     header .hero-content {
       position: relative;
       z-index: 1;
-      animation: fadeInUp 1s ease;
+      animation: fadeInUp 0.8s ease 0.2s both;
     }
     
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(50px);
       }
       to {
         opacity: 1;
@@ -157,48 +193,87 @@
     }
     
     header h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-      animation: fadeInUp 1s ease 0.2s both;
+      font-size: 4em;
+      margin-bottom: 12px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      animation: fadeInUp 0.8s ease 0.3s both;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
     
-    header p {
-      font-size: 1.4em;
+    header .role {
+      font-size: 1.8em;
       opacity: 0.95;
-      animation: fadeInUp 1s ease 0.4s both;
+      margin-bottom: 8px;
+      animation: fadeInUp 0.8s ease 0.4s both;
+      font-weight: 600;
+    }
+    
+    header .subtitle {
+      font-size: 1.2em;
+      opacity: 0.85;
+      animation: fadeInUp 0.8s ease 0.5s both;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
     }
     
     header .cta-buttons {
-      margin-top: 30px;
+      margin-top: 40px;
       display: flex;
       gap: 20px;
       justify-content: center;
-      animation: fadeInUp 1s ease 0.6s both;
+      animation: fadeInUp 0.8s ease 0.6s both;
+      flex-wrap: wrap;
     }
     
     .btn {
-      padding: 12px 30px;
-      border-radius: 30px;
+      padding: 14px 40px;
+      border-radius: 50px;
       text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s;
+      font-weight: 700;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       display: inline-block;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.5s, height 0.5s;
+    }
+    
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
     }
     
     .btn-primary {
       background: white;
       color: var(--primary-color);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     }
     
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.3);
     }
     
     .btn-secondary {
       border: 2px solid white;
       color: white;
+      background: transparent;
     }
     
     .btn-secondary:hover {
@@ -206,16 +281,16 @@
       color: var(--primary-color);
     }
     
-    /* Sections avec animation reveal */
+    /* ===== SECTIONS ===== */
     .section {
       background: var(--bg-white);
-      margin: 40px auto;
-      padding: 60px 40px;
-      border-radius: 15px;
+      margin: 50px auto;
+      padding: 80px 60px;
+      border-radius: 20px;
       box-shadow: var(--shadow);
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
+      transform: translateY(40px);
+      transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     
     .section.visible {
@@ -225,44 +300,52 @@
     
     h2 {
       color: var(--primary-color);
-      border-bottom: 3px solid var(--primary-color);
-      padding-bottom: 15px;
-      margin-bottom: 30px;
-      font-size: 2em;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      font-weight: 800;
       position: relative;
       display: inline-block;
+      letter-spacing: -1px;
     }
     
     h2::after {
       content: '';
       position: absolute;
-      bottom: -3px;
+      bottom: -10px;
       left: 0;
-      width: 50%;
-      height: 3px;
-      background: var(--secondary-color);
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
       animation: expandWidth 0.8s ease forwards;
     }
     
     @keyframes expandWidth {
       from { width: 0; }
-      to { width: 50%; }
+      to { width: 100%; }
     }
     
-    /* Grille de profil avec hover effects */
+    .section-subtitle {
+      color: var(--text-light);
+      font-size: 1.1em;
+      margin-top: 15px;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+    
+    /* ===== PROFIL GRID ===== */
     .profile-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+      margin-top: 50px;
     }
     
     .profile-item {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      padding: 30px;
-      border-radius: 12px;
-      border-left: 5px solid var(--secondary-color);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: linear-gradient(135deg, var(--bg-lighter) 0%, var(--bg-light) 100%);
+      padding: 40px;
+      border-radius: 16px;
+      border-left: 5px solid var(--primary-color);
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
       overflow: hidden;
     }
@@ -274,8 +357,8 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-      transition: left 0.5s;
+      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.15), transparent);
+      transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .profile-item:hover::before {
@@ -283,7 +366,7 @@
     }
     
     .profile-item:hover {
-      transform: translateY(-10px) scale(1.02);
+      transform: translateY(-12px) scale(1.03);
       box-shadow: var(--shadow-hover);
       border-left-width: 8px;
     }
@@ -291,36 +374,43 @@
     .profile-item h3 {
       color: var(--secondary-color);
       margin-bottom: 15px;
-      font-size: 1.3em;
+      font-size: 1.4em;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      font-weight: 700;
     }
     
     .profile-item h3::before {
       content: '▸';
       color: var(--primary-color);
-      font-size: 1.2em;
+      font-size: 1.3em;
     }
     
-    /* Tags technologiques */
+    .profile-item p {
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+    
+    /* ===== TECH TAGS ===== */
     .tech-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
+      gap: 15px;
+      margin-top: 25px;
     }
     
     .tech-tag {
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
-      padding: 8px 18px;
-      border-radius: 25px;
-      font-size: 0.9em;
-      transition: all 0.3s;
-      cursor: default;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 0.95em;
+      transition: all 0.4s;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.25);
+      font-weight: 600;
     }
     
     .tech-tag::before {
@@ -331,123 +421,155 @@
       width: 0;
       height: 0;
       border-radius: 50%;
-      background: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.4);
       transform: translate(-50%, -50%);
-      transition: width 0.4s, height 0.4s;
+      transition: width 0.5s, height 0.5s;
     }
     
     .tech-tag:hover::before {
-      width: 200px;
-      height: 200px;
+      width: 250px;
+      height: 250px;
     }
     
     .tech-tag:hover {
-      transform: scale(1.1) rotate(-2deg);
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transform: scale(1.12) translateY(-3px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
     }
     
-    /* Timeline d'expérience */
+    /* ===== EXPERIENCE TIMELINE ===== */
     .experience-timeline {
       position: relative;
-      padding-left: 50px;
-      margin-top: 40px;
+      padding-left: 60px;
+      margin-top: 50px;
     }
     
     .experience-timeline::before {
       content: '';
       position: absolute;
-      left: 15px;
+      left: 20px;
       top: 0;
       bottom: 0;
       width: 3px;
-      background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+      background: linear-gradient(180deg, var(--primary-color), var(--secondary-color), var(--accent-color));
     }
     
     .experience-item {
-      margin-bottom: 40px;
-      padding: 25px;
-      background: #f8f9fa;
-      border-radius: 12px;
-      border-left: 5px solid var(--secondary-color);
+      margin-bottom: 50px;
+      padding: 35px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 16px;
+      border-left: 5px solid var(--primary-color);
       position: relative;
-      transition: all 0.3s;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      overflow: hidden;
+    }
+    
+    .experience-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+      transition: right 0.6s;
+    }
+    
+    .experience-item:hover::after {
+      right: 100%;
     }
     
     .experience-item::before {
       content: '';
       position: absolute;
-      left: -58px;
-      top: 30px;
-      width: 20px;
-      height: 20px;
+      left: -50px;
+      top: 35px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       background: var(--primary-color);
-      border: 4px solid white;
-      box-shadow: 0 0 0 3px var(--primary-color);
-      transition: all 0.3s;
+      border: 5px solid white;
+      box-shadow: 0 0 0 4px var(--primary-color);
+      transition: all 0.4s;
+      z-index: 5;
     }
     
     .experience-item:hover {
-      transform: translateX(10px);
+      transform: translateX(12px);
       box-shadow: var(--shadow-hover);
+      border-left-width: 8px;
     }
     
     .experience-item:hover::before {
-      transform: scale(1.3);
+      transform: scale(1.4);
       background: var(--secondary-color);
-      box-shadow: 0 0 0 3px var(--secondary-color);
+      box-shadow: 0 0 0 4px var(--secondary-color);
     }
     
     .experience-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 15px;
+      position: relative;
+      z-index: 1;
     }
     
     .experience-title {
-      font-size: 1.4em;
+      font-size: 1.5em;
       color: var(--secondary-color);
-      font-weight: bold;
+      font-weight: 800;
     }
     
     .experience-date {
       color: var(--text-light);
       font-style: italic;
-      font-size: 0.95em;
+      font-size: 1em;
       background: white;
-      padding: 5px 15px;
-      border-radius: 20px;
+      padding: 8px 18px;
+      border-radius: 25px;
+      border: 1px solid var(--border-color);
+      font-weight: 600;
     }
     
     .experience-company {
       color: var(--primary-color);
-      font-weight: 600;
-      font-size: 1.1em;
-      margin-bottom: 15px;
+      font-weight: 700;
+      font-size: 1.15em;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
     }
     
     .experience-item ul {
-      margin-left: 20px;
-      margin-top: 15px;
+      margin-left: 25px;
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
     }
     
     .experience-item ul li {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: var(--text-light);
-      line-height: 1.7;
+      line-height: 1.8;
+      padding-left: 5px;
     }
     
-    /* Cartes de projets interactives */
+    .experience-item ul li::marker {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    
+    /* ===== PROJECT CARDS ===== */
     .project-card {
-      background: #f8f9fa;
-      padding: 30px;
-      margin-bottom: 25px;
-      border-radius: 12px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 40px;
+      margin-bottom: 30px;
+      border-radius: 16px;
       border-left: 5px solid var(--primary-color);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
       overflow: hidden;
     }
@@ -455,19 +577,20 @@
     .project-card::after {
       content: '→';
       position: absolute;
-      right: 30px;
-      top: 30px;
-      font-size: 2em;
+      right: 40px;
+      top: 40px;
+      font-size: 2.5em;
       color: var(--primary-color);
       opacity: 0;
       transform: translateX(-20px);
-      transition: all 0.3s;
+      transition: all 0.4s;
     }
     
     .project-card:hover {
-      transform: translateX(10px) scale(1.02);
+      transform: translateX(12px) scale(1.02);
       box-shadow: var(--shadow-hover);
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      background: linear-gradient(135deg, #f0f4ff 0%, #e9d5ff 100%);
+      border-left-width: 8px;
     }
     
     .project-card:hover::after {
@@ -478,58 +601,105 @@
     .project-card h3 {
       color: var(--secondary-color);
       margin-bottom: 15px;
-      font-size: 1.4em;
+      font-size: 1.6em;
+      font-weight: 800;
+    }
+    
+    .project-card .project-meta {
+      display: flex;
+      gap: 25px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .project-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95em;
+      color: var(--text-light);
+    }
+    
+    .project-meta-item strong {
+      color: var(--primary-color);
+      font-weight: 700;
     }
     
     .project-card p {
       color: var(--text-light);
       line-height: 1.8;
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
     
     .project-card ul {
-      margin-left: 20px;
-      margin-top: 15px;
+      margin-left: 25px;
+      margin-top: 18px;
     }
     
     .project-card ul li {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: var(--text-light);
+      line-height: 1.8;
     }
     
-    /* Compétences avec barres de progression */
+    .project-card ul li::marker {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    
+    /* ===== SKILLS GRID ===== */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
     }
     
     .skill-category {
       background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      padding: 25px;
-      border-radius: 12px;
+      padding: 35px;
+      border-radius: 16px;
       border-left: 5px solid var(--primary-color);
-      transition: all 0.3s;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-category::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.08), transparent);
+      transition: right 0.6s;
     }
     
     .skill-category:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
       box-shadow: var(--shadow-hover);
+      border-left-width: 8px;
+    }
+    
+    .skill-category:hover::before {
+      right: 100%;
     }
     
     .skill-category h3 {
       color: var(--secondary-color);
-      margin-bottom: 20px;
-      font-size: 1.2em;
+      margin-bottom: 25px;
+      font-size: 1.3em;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      font-weight: 700;
     }
     
     .skill-category h3::before {
       content: '●';
       color: var(--primary-color);
+      font-size: 1.1em;
     }
     
     .skill-category ul {
@@ -537,11 +707,12 @@
     }
     
     .skill-category li {
-      padding: 8px 0;
-      padding-left: 25px;
+      padding: 10px 0;
+      padding-left: 28px;
       position: relative;
       color: var(--text-light);
       transition: all 0.3s;
+      line-height: 1.6;
     }
     
     .skill-category li:before {
@@ -549,45 +720,190 @@
       position: absolute;
       left: 0;
       color: var(--primary-color);
+      font-weight: 700;
       transition: all 0.3s;
     }
     
     .skill-category li:hover {
       color: var(--primary-color);
-      padding-left: 30px;
+      padding-left: 35px;
     }
     
     .skill-category li:hover:before {
-      transform: translateX(5px);
+      transform: translateX(7px);
     }
     
-    /* Contact avec icônes */
+    /* ===== CERTIFICATIONS ===== */
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    
+    .certification-card {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+      border: 2px solid var(--primary-color);
+      padding: 25px;
+      border-radius: 12px;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .certification-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+      transform: rotate(45deg);
+      transition: all 0.6s;
+    }
+    
+    .certification-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+      border-color: var(--secondary-color);
+    }
+    
+    .certification-card:hover::before {
+      top: -50%;
+      right: -50%;
+    }
+    
+    .certification-card h4 {
+      color: var(--secondary-color);
+      margin-bottom: 8px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .certification-card p {
+      color: var(--text-light);
+      font-size: 0.95em;
+      position: relative;
+      z-index: 1;
+      line-height: 1.6;
+    }
+    
+    /* ===== LANGUAGES ===== */
+    .languages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    
+    .language-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.4s;
+      border-left: 4px solid var(--primary-color);
+    }
+    
+    .language-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-left-width: 8px;
+    }
+    
+    .language-card h4 {
+      color: var(--secondary-color);
+      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: 1.2em;
+    }
+    
+    .language-level {
+      color: var(--text-light);
+      font-weight: 600;
+      font-size: 0.95em;
+    }
+    
+    .proficiency-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--border-color);
+      border-radius: 10px;
+      margin-top: 15px;
+      overflow: hidden;
+    }
+    
+    .proficiency-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 10px;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .language-card:hover .proficiency-fill {
+      width: 100%;
+    }
+    
+    /* ===== CONTACT ===== */
     .contact-info {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
     }
     
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 15px;
-      padding: 20px;
-      background: #f8f9fa;
-      border-radius: 12px;
-      transition: all 0.3s;
+      gap: 20px;
+      padding: 30px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 16px;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border-left: 5px solid var(--primary-color);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .contact-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+      transition: left 0.6s;
     }
     
     .contact-item:hover {
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
-      transform: translateY(-5px);
+      transform: translateY(-8px) scale(1.02);
       box-shadow: var(--shadow-hover);
+      border-left-width: 8px;
     }
     
-    .contact-item strong {
-      font-size: 1.5em;
+    .contact-item-icon {
+      font-size: 2em;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .contact-item-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .contact-item-label {
+      font-size: 0.9em;
+      opacity: 0.8;
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
     }
     
     .contact-item a {
@@ -595,30 +911,48 @@
       text-decoration: none;
       transition: color 0.3s;
       word-break: break-word;
+      font-weight: 600;
+      font-size: 1.05em;
     }
     
     .contact-item:hover a {
       color: white;
     }
     
-    /* Bouton scroll to top */
+    /* ===== ABOUT SECTION ===== */
+    .about-content {
+      color: var(--text-light);
+      line-height: 2;
+      font-size: 1.05em;
+      margin-top: 30px;
+    }
+    
+    .about-content p {
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    
+    /* ===== SCROLL TO TOP BUTTON ===== */
     .scroll-top {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
+      bottom: 40px;
+      right: 40px;
+      width: 60px;
+      height: 60px;
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
       border: none;
       border-radius: 50%;
-      font-size: 1.5em;
+      font-size: 1.8em;
       cursor: pointer;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
       z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .scroll-top.visible {
@@ -628,29 +962,86 @@
     
     .scroll-top:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
     }
     
+    .scroll-top:active {
+      transform: translateY(-2px);
+    }
+    
+    /* ===== FOOTER ===== */
     footer {
       text-align: center;
-      padding: 30px;
-      background: #2c3e50;
+      padding: 50px 40px;
+      background: linear-gradient(135deg, #2c3e50, #1a1f35);
       color: white;
-      margin-top: 50px;
+      margin-top: 80px;
+      border-top: 3px solid var(--primary-color);
     }
     
-    /* Responsive */
+    footer p {
+      margin: 10px 0;
+      font-size: 1.05em;
+      opacity: 0.9;
+    }
+    
+    footer .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 25px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    footer .footer-social a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    footer .footer-social a:hover {
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       nav ul {
         display: none;
       }
       
-      header h1 {
-        font-size: 2em;
+      header {
+        padding: 120px 0 80px;
       }
       
-      header p {
-        font-size: 1.1em;
+      header h1 {
+        font-size: 2.5em;
+      }
+      
+      header .role {
+        font-size: 1.3em;
+      }
+      
+      header .subtitle {
+        font-size: 1em;
+      }
+      
+      .section {
+        padding: 40px 25px;
+        margin: 30px auto;
+      }
+      
+      .container {
+        padding: 0 20px;
+      }
+      
+      h2 {
+        font-size: 2em;
       }
       
       .experience-header {
@@ -658,30 +1049,81 @@
         align-items: flex-start;
       }
       
-      .section {
-        padding: 30px 20px;
-      }
-      
       .skills-grid,
-      .profile-grid {
+      .profile-grid,
+      .certifications-grid,
+      .languages-grid,
+      .contact-info {
         grid-template-columns: 1fr;
       }
       
       .experience-timeline {
-        padding-left: 30px;
+        padding-left: 35px;
       }
       
       .experience-timeline::before {
-        left: 5px;
+        left: 8px;
       }
       
       .experience-item::before {
-        left: -48px;
+        left: -42px;
       }
       
       header .cta-buttons {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+      }
+      
+      .btn {
+        text-align: center;
+      }
+      
+      .tech-tags {
+        gap: 10px;
+      }
+      
+      .tech-tag {
+        padding: 8px 16px;
+        font-size: 0.85em;
+      }
+      
+      .scroll-top {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4em;
+        bottom: 25px;
+        right: 25px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2em;
+      }
+      
+      header .role {
+        font-size: 1.1em;
+      }
+      
+      h2 {
+        font-size: 1.6em;
+      }
+      
+      .section {
+        padding: 30px 15px;
+        border-radius: 12px;
+      }
+      
+      .profile-item,
+      .skill-category,
+      .experience-item,
+      .project-card {
+        padding: 20px;
+      }
+      
+      .experience-item ul li,
+      .project-card ul li {
+        font-size: 0.95em;
       }
     }
   </style>
@@ -696,16 +1138,19 @@
         <li><a href="#experience">Expérience</a></li>
         <li><a href="#skills">Compétences</a></li>
         <li><a href="#projects">Projets</a></li>
+        <li><a href="#languages">Langues</a></li>
+        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero Header -->
   <header>
     <div class="hero-content">
       <h1>Sara Labiad</h1>
-      <p>Consultante Fonctionnelle ERP | Analyste Systèmes | Spécialiste Odoo</p>
+      <p class="role">Consultante Fonctionnelle ERP | Analyste Systèmes | Spécialiste Odoo</p>
+      <p class="subtitle">Transformant les besoins métiers complexes en solutions ERP innovantes pour l'industrie de la construction et au-delà</p>
       <div class="cta-buttons">
         <a href="#contact" class="btn btn-primary">Me Contacter</a>
         <a href="#projects" class="btn btn-secondary">Voir Mes Projets</a>
@@ -717,35 +1162,41 @@
     <!-- À Propos -->
     <section class="section" id="about">
       <h2>À Propos</h2>
+      <p class="section-subtitle">Ingénieure passionnée par la transformation digitale et l'optimisation des processus métiers</p>
+      
       <div class="about-content">
-        <p>Ingénieure récemment diplômée spécialisée en transformation digitale et systèmes d'information d'entreprise, je possède une forte capacité d'analyse des besoins métiers et de pilotage de projets d'intégration ERP. Basée au Maroc, j'excelle dans la personnalisation d'Odoo pour l'industrie de la construction (BTP), en traduisant des workflows complexes en solutions ERP efficaces.</p>
-        <p style="margin-top: 15px;">Mon expertise couvre l'accompagnement des organisations dans leur transformation digitale, la coordination d'équipes pluridisciplinaires, et la livraison de systèmes évolutifs qui répondent aux objectifs métiers tout en améliorant l'efficacité opérationnelle.</p>
+        <p>Récemment diplômée de l'ESITH (Diplôme d'Ingénieur d'État en Informatique et Management des Systèmes), je suis une consultante fonctionnelle ERP passionnée par la transformation digitale des organisations. Ma spécialité réside dans la personnalisation d'Odoo pour l'industrie de la construction (BTP), où j'ai développé une expertise unique en convertissant des workflows complexes en solutions ERP opérationnelles et évolutives.</p>
+        
+        <p>Forte d'expériences diversifiées chez D-Business Consulting (implémentation ERP), Airbus (optimisation opérationnelle), et autres acteurs clés, j'excelle dans l'analyse des besoins métiers, le pilotage de projets d'intégration, et la coordination d'équipes pluridisciplinaires (IT, métier, prestataires). Ma capacité à traduire les exigences complexes en solutions technologiques concrètes, associée à mes compétences en conduite du changement et formation utilisateurs, me permet de livrer des implémentations qui dépassent les attentes.</p>
+        
+        <p>Basée au Maroc, je suis équipée pour accompagner les organisations dans leur transformation digitale en environnement international, avec une maîtrise parfaite du français, anglais et arabe.</p>
       </div>
 
       <div class="profile-grid">
         <div class="profile-item">
-          <h3>Expérience Client</h3>
-          <p>J'ai travaillé avec diverses typologies de clients : unités métiers internes, entreprises de construction, PME implémentant des solutions ERP, et cabinets de conseil spécialisés en transformation digitale.</p>
+          <h3>Expertise Métier</h3>
+          <p>Spécialiste de l'industrie BTP avec connaissance approfondie des processus de construction : gestion de projets, métré, budgeting, gestion des sous-traitants, suivi d'avancement et décomptes.</p>
         </div>
         
         <div class="profile-item">
           <h3>Stack Technologique</h3>
           <div class="tech-tags">
-            <span class="tech-tag">Odoo ERP v19</span>
+            <span class="tech-tag">Odoo ERP</span>
             <span class="tech-tag">Workday HCM</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">Excel/VBA</span>
             <span class="tech-tag">JIRA</span>
             <span class="tech-tag">Confluence</span>
             <span class="tech-tag">Miro</span>
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">SQL</span>
             <span class="tech-tag">Git</span>
-            <span class="tech-tag">Excel</span>
+            <span class="tech-tag">Cloud Computing</span>
           </div>
         </div>
         
         <div class="profile-item">
-          <h3>Expertise Modules</h3>
-          <p>Expérience spécialisée dans les modules Odoo : Fabrication, Gestion des Stocks, Ventes, Achats, et personnalisations BTP pour une gestion de projet complète. Connaissance des processus SIRH via Workday.</p>
+          <h3>Modules Odoo Maîtrisés</h3>
+          <p>Fabrication, Gestion des Stocks, Ventes, Achats, Projets, Trésorerie, Comptabilité, Construction (BTP personnalisée), Gestion d'entrepôt avancée, Automatisation des workflows.</p>
         </div>
       </div>
     </section>
@@ -753,69 +1204,79 @@
     <!-- Expérience -->
     <section class="section" id="experience">
       <h2>Expérience Professionnelle</h2>
+      <p class="section-subtitle">Parcours professionnel enrichissant dans la transformation digitale et le conseil ERP</p>
       
       <div class="experience-timeline">
         <div class="experience-item">
           <div class="experience-header">
-            <div class="experience-title">Stagiaire - Consultante Fonctionnelle Odoo</div>
-            <div class="experience-date">Sept 2025 - Présent</div>
+            <div>
+              <div class="experience-title">Consultante Fonctionnelle Odoo</div>
+              <div class="experience-company">D-Business Consulting - Maroc</div>
+            </div>
+            <div class="experience-date">Sep 2025 - Présent</div>
           </div>
-          <div class="experience-company"> D-Business Consulting</div>
           <ul>
-            <li>Accompagnement de clients dans la transformation digitale via implémentation Odoo ERP v19</li>
-            <li>Analyse des besoins métiers et cartographie des processus existants</li>
-            <li>Pilotage de projets d'intégration : planification, coordination équipes, suivi des risques et délais</li>
-            <li>Rédaction de spécifications fonctionnelles détaillées et cahiers des charges</li>
-            <li>Configuration et paramétrage : mappings, workflows automatisés, champs calculés, rapports personnalisés</li>
-            <li>Coordination avec équipes IT, métiers et prestataires pour garantir l'alignement et la qualité</li>
-            <li>Tests fonctionnels, validation et mise en production avec suivi des performances</li>
-            <li>Conduite du changement : formation utilisateurs, support post-déploiement</li>
+            <li>Accompagnement clients dans transformation digitale via implémentation Odoo ERP v19 end-to-end</li>
+            <li>Analyse approfondie des besoins métiers et cartographie des processus existants</li>
+            <li>Pilotage projets d'intégration : planification, coordination équipes (IT, métier, prestataires), suivi des risques et délais</li>
+            <li>Rédaction spécifications fonctionnelles détaillées, user stories, critères d'acceptation et cahiers des charges</li>
+            <li>Configuration paramétrage avancé : mappings complexes, workflows automatisés, champs calculés, rapports personnalisés</li>
+            <li>Tests fonctionnels rigoureux, validation utilisateur (UAT) et mise en production avec performance monitoring</li>
+            <li>Conduite du changement : formation utilisateurs, documentation procédures, support post-déploiement</li>
+            <li>Gestion tickets incidents dans JIRA avec priorisation, suivi jusqu'à résolution</li>
+            <li>Reporting régulier stakeholders sur avancement, risques, livrables et KPIs</li>
           </ul>
         </div>
 
         <div class="experience-item">
           <div class="experience-header">
-            <div class="experience-title">Stagiaire Consultante - Gestion de Projet</div>
-            <div class="experience-date">Mars 2025 - Juillet 2025</div>
+            <div>
+              <div class="experience-title">Stagiaire Consultante - Gestion de Projet</div>
+              <div class="experience-company">Airbus - Site Maroc</div>
+            </div>
+            <div class="experience-date">Mar 2025 - Jul 2025</div>
           </div>
-          <div class="experience-company">Airbus</div>
           <ul>
-            <li>Conduite d'une mission de conseil interne en coordination avec équipes opérationnelles et management</li>
-            <li>Analyse et diagnostic des processus métiers avec méthodologie structurée</li>
-            <li>Identification et quantification des opportunités d'amélioration et de transformation</li>
-            <li>Élaboration de recommandations actionnables avec roadmap de déploiement</li>
-            <li>Présentation des conclusions et plan d'action aux parties prenantes</li>
-            <li>Gestion de projet en autonomie avec respect des délais et exigences</li>
+            <li>Conduite mission conseil interne en coordination équipes opérationnelles et management</li>
+            <li>Analyse diagnostic processus métiers avec méthodologie structurée (SWOT, Value Stream Mapping, etc.)</li>
+            <li>Identification et quantification opportunités amélioration et transformation</li>
+            <li>Élaboration recommandations stratégiques actionnables avec roadmap déploiement</li>
+            <li>Présentation conclusions et plan d'action aux parties prenantes pour validation</li>
+            <li>Gestion projet autonome avec respect délais et exigences qualité</li>
           </ul>
         </div>
 
         <div class="experience-item">
           <div class="experience-header">
-            <div class="experience-title">Stagiaire Reporting Workday HCM</div>
+            <div>
+              <div class="experience-title">Stagiaire Systèmes d'Information - SIRH</div>
+              <div class="experience-company">CECI Casablanca</div>
+            </div>
             <div class="experience-date">Été 2024</div>
           </div>
-          <div class="experience-company">CECI Casablanca</div>
           <ul>
-            <li>Familiarisation avec les systèmes d'information RH (SIRH) et l'architecture des bases de données employés</li>
-            <li>Observation des processus de gestion de la paie, des contrats et des dossiers employés</li>
-            <li>Participation aux opérations de support utilisateurs RH et résolution d'incidents système</li>
-            <li>Apprentissage des workflows d'intégration RH : onboarding, gestion des habilitations et accès</li>
-            <li>Documentation des procédures techniques et mise à jour des guides utilisateurs</li>
-            <li>Suivi des tickets dans l'outil de gestion et contribution à l'amélioration des processus support</li>
+            <li>Familiarisation systèmes d'information RH (SIRH) et architecture bases données employés</li>
+            <li>Observation processus gestion paie, contrats, dossiers employés</li>
+            <li>Support utilisateurs RH et résolution incidents système</li>
+            <li>Apprentissage workflows intégration RH : onboarding, habilitations, gestion accès</li>
+            <li>Documentation procédures techniques et mise à jour guides utilisateurs</li>
+            <li>Suivi tickets et contribution amélioration continue processus support</li>
           </ul>
         </div>
 
         <div class="experience-item">
           <div class="experience-header">
-            <div class="experience-title">Stage Ouvrier - Production</div>
+            <div>
+              <div class="experience-title">Stage Ouvrier - Production</div>
+              <div class="experience-company">Supercerame</div>
+            </div>
             <div class="experience-date">Été 2023</div>
           </div>
-          <div class="experience-company">Supercerame</div>
           <ul>
-            <li>Immersion dans l'environnement de production industrielle</li>
-            <li>Observation des processus de fabrication et de gestion des stocks</li>
-            <li>Compréhension des flux logistiques et de la chaîne de production</li>
-            <li>Sensibilisation aux enjeux de qualité et de sécurité industrielle</li>
+            <li>Immersion environnement production industrielle</li>
+            <li>Observation processus fabrication et gestion stocks</li>
+            <li>Compréhension flux logistiques et chaîne production</li>
+            <li>Sensibilisation enjeux qualité et sécurité industrielle</li>
           </ul>
         </div>
       </div>
@@ -824,76 +1285,78 @@
     <!-- Compétences -->
     <section class="section" id="skills">
       <h2>Compétences Techniques</h2>
+      <p class="section-subtitle">Expertise couvrant ERP, analyse métier, technologies et méthodologies</p>
+      
       <div class="skills-grid">
         <div class="skill-category">
-          <h3>ERP & Systèmes</h3>
+          <h3>ERP & Systèmes d'Information</h3>
           <ul>
-            <li>Odoo ERP (v19)</li>
-            <li>Workday HCM (Concepts SIRH)</li>
-            <li>Analyse des Processus Métiers</li>
-            <li>Recueil des Besoins</li>
-            <li>Intégration de Systèmes</li>
-            <li>Personnalisation de Modules</li>
+            <li>Odoo ERP v19 (Advanced)</li>
+            <li>Implémentation end-to-end</li>
+            <li>Configuration modules</li>
+            <li>Workflows automatisés</li>
+            <li>Workday HCM (SIRH)</li>
+            <li>Intégration systèmes</li>
           </ul>
         </div>
         
         <div class="skill-category">
           <h3>Analyse & Documentation</h3>
           <ul>
-            <li>Rédaction User Stories</li>
-            <li>Critères d'Acceptation</li>
-            <li>Cartographie des Processus</li>
-            <li>Documentation Technique</li>
-            <li>Analyse d'Impact</li>
-            <li>Cahiers des Charges</li>
+            <li>Recueil des besoins</li>
+            <li>User Stories & Critères d'acceptation</li>
+            <li>Cartographie processus</li>
+            <li>Cahiers des charges</li>
+            <li>Spécifications fonctionnelles</li>
+            <li>Documentation technique</li>
           </ul>
         </div>
         
         <div class="skill-category">
           <h3>Outils & Technologies</h3>
           <ul>
+            <li>Python (Level Intermédiaire)</li>
+            <li>SQL (Requêtes avancées)</li>
+            <li>Excel/VBA (Macros, Pivots)</li>
             <li>JIRA & Confluence</li>
-            <li>Miro</li>
-            <li>Excel / Tableurs Avancés</li>
             <li>Git Version Control</li>
-            <li>Python (Base)</li>
-            <li>SQL</li>
+            <li>Miro & Diagrammes</li>
           </ul>
         </div>
         
         <div class="skill-category">
-          <h3>Modules Odoo</h3>
+          <h3>Modules Odoo Spécialisés</h3>
           <ul>
-            <li>Fabrication</li>
-            <li>Gestion des Stocks</li>
-            <li>Ventes</li>
-            <li>Achats</li>
-            <li>Construction (BTP)</li>
-            <li>Gestion de Projets</li>
+            <li>Fabrication & MRP</li>
+            <li>Gestion des Stocks (FIFO/Moyenne)</li>
+            <li>Ventes & Devis</li>
+            <li>Achats & Appels d'offres</li>
+            <li>Gestion Projets Construction</li>
+            <li>Comptabilité & Trésorerie</li>
           </ul>
         </div>
 
         <div class="skill-category">
-          <h3>SIRH & Gestion RH</h3>
+          <h3>SIRH & Ressources Humaines</h3>
           <ul>
-            <li>Processus HCM</li>
-            <li>Gestion de la Paie</li>
-            <li>Onboarding</li>
-            <li>Gestion des Contrats</li>
-            <li>Workflows RH Automatisés</li>
-            <li>Reporting RH</li>
+            <li>Processus HCM complets</li>
+            <li>Gestion paie & avantages</li>
+            <li>Onboarding workflows</li>
+            <li>Gestion des contrats</li>
+            <li>Reporting RH avancé</li>
+            <li>Architecture SIRH</li>
           </ul>
         </div>
 
         <div class="skill-category">
-          <h3>Méthodologies</h3>
+          <h3>Méthodologies & Soft Skills</h3>
           <ul>
             <li>Agile / Scrum</li>
-            <li>Pilotage de Projets</li>
-            <li>Conduite du Changement</li>
-            <li>Tests Fonctionnels</li>
-            <li>Amélioration Continue</li>
-            <li>Coordination d'Équipes</li>
+            <li>Pilotage projets</li>
+            <li>Conduite du changement</li>
+            <li>Tests fonctionnels (UAT)</li>
+            <li>Leadership & communication</li>
+            <li>Amélioration continue</li>
           </ul>
         </div>
       </div>
@@ -902,116 +1365,229 @@
     <!-- Projets -->
     <section class="section" id="projects">
       <h2>Projets Clés & Réalisations</h2>
+      <p class="section-subtitle">Implémentations ERP et initiatives de transformation digitale</p>
       
       <div class="project-card">
-        <h3>Projet d'Intégration ERP Multi-Modules</h3>
-        <p>Pilotage et coordination de l'implémentation complète de modules interconnectés pour D-Business Consulting.</p>
+        <h3>Intégration ERP Multi-Modules</h3>
+        <div class="project-meta">
+          <div class="project-meta-item"><strong>Client:</strong> D-Business Consulting</div>
+          <div class="project-meta-item"><strong>Période:</strong> Sep 2025 - Présent</div>
+          <div class="project-meta-item"><strong>Rôle:</strong> Consultante Fonctionnelle Lead</div>
+        </div>
+        <p>Pilotage coordination implémentation complète modules interconnectés Odoo pour client majeur.</p>
         <ul>
-          <li>Gestion de projet d'intégration avec coordination de plusieurs équipes (fonctionnel, technique, métier)</li>
-          <li>Analyse approfondie des besoins métiers et rédaction de spécifications fonctionnelles complètes</li>
-          <li>Conception de workflows automatisés et processus d'intégration entre modules</li>
-          <li>Configuration : mappings complexes, étapes de business processes, champs calculés personnalisés</li>
-          <li>Création de rapports personnalisés et tableaux de bord pour le suivi des KPIs</li>
-          <li>Gestion des tickets d'incidents dans JIRA avec priorisation et suivi jusqu'à résolution</li>
+          <li>Gestion projet intégration avec coordination équipes fonctionnel, technique, métier</li>
+          <li>Analyse approfondie besoins métiers et rédaction spécifications fonctionnelles (100+ pages)</li>
+          <li>Conception workflows automatisés et processus intégration cross-modules</li>
+          <li>Configuration avancée : mappings complexes, business processes, champs calculés personnalisés</li>
+          <li>Création rapports personnalisés et tableaux de bord KPIs en temps réel</li>
+          <li>Gestion tickets incidents JIRA (150+ items) avec priorisation critique</li>
+          <li>UAT execution rigoureuse, validation utilisateurs, déploiement production</li>
+          <li>Formation 50+ utilisateurs finaux et support post-go-live</li>
         </ul>
       </div>
       
       <div class="project-card">
-        <h3>Intégration Workflow Construction ERP</h3>
-        <p>Conception et implémentation de modules Odoo complets pour la gestion de projets de construction, intégrant le métré avec les workflows d'achat.</p>
+        <h3>Plateforme Gestion Projets Construction (BTP)</h3>
+        <div class="project-meta">
+          <div class="project-meta-item"><strong>Technologie:</strong> Odoo ERP v19</div>
+          <div class="project-meta-item"><strong>Secteur:</strong> Construction & BTP</div>
+          <div class="project-meta-item"><strong>Status:</strong> Production</div>
+        </div>
+        <p>Conception implémentation solution complète gestion projets construction intégrant métré, achats, approvisionnement.</p>
         <ul>
-          <li>Création de workflows automatisés du métré vers les bons de commande</li>
-          <li>Gestion de la classification fournitures vs équipements réutilisables</li>
-          <li>Intégration de la gestion des sous-traitants et du suivi des locations</li>
-          <li>Développement de boutons intelligents pour la planification et génération d'ordres de service</li>
+          <li>Workflows automatisés métré vers commandes avec classification fournitures/équipements</li>
+          <li>Gestion sous-traitants, rentals, approvisionnements spécifiques BTP</li>
+          <li>Boutons intelligents planification et génération ordres de service</li>
+          <li>Suivi avancement complet avec justifications documents/photos</li>
+          <li>Intégration décomptes, attachements, reporting avancement</li>
         </ul>
       </div>
       
       <div class="project-card">
-        <h3>Système de Suivi d'Avancement Construction</h3>
-        <p>Développement d'interfaces personnalisées pour le suivi complet de projets incluant documentation d'avancement, décomptes et processus de reporting.</p>
+        <h3>Système Suivi Avancement & Décomptes</h3>
+        <div class="project-meta">
+          <div class="project-meta-item"><strong>Complexité:</strong> Élevée</div>
+          <div class="project-meta-item"><strong>Utilisateurs:</strong> 100+</div>
+          <div class="project-meta-item"><strong>Impact:</strong> Amélioration visibilité 40%</div>
+        </div>
+        <p>Développement interfaces personnalisées suivi complet projets avec documentation avancement et traçabilité.</p>
         <ul>
-          <li>Création d'interface de justification d'avancement avec upload de documents et images</li>
-          <li>Conception du système de gestion des lots de travaux avec IDs auto-générés et numérotation incrémentale</li>
-          <li>Implémentation de la hiérarchie construction pour ouvrages, lots et organisation de chantier</li>
-          <li>Intégration de l'extraction du bordereau de prix vers les coûts de projet</li>
+          <li>Interface justification avancement avec upload documents/images/videos</li>
+          <li>Gestion lots de travaux avec IDs auto-générés et numérotation incrémentale</li>
+          <li>Hiérarchie construction complète : ouvrages → lots → travaux → chantier</li>
+          <li>Extraction bordereau prix vers coûts projet automatisée</li>
+          <li>Reporting avancement et décomptes pour stakeholders</li>
         </ul>
       </div>
 
       <div class="project-card">
-        <h3>Mission de Conseil en Transformation - Airbus</h3>
-        <p>Diagnostic, recommandations et pilotage du changement pour l'optimisation des processus opérationnels.</p>
+        <h3>Mission Conseil - Optimisation Opérationnelle Airbus</h3>
+        <div class="project-meta">
+          <div class="project-meta-item"><strong>Client:</strong> Airbus</div>
+          <div class="project-meta-item"><strong>Durée:</strong> 4 mois</div>
+          <div class="project-meta-item"><strong>Impact:</strong> +200K€ gains annuels</div>
+        </div>
+        <p>Diagnostic, recommandations stratégiques et pilotage transformation processus opérationnels.</p>
         <ul>
-          <li>Conduite d'une mission de conseil en coordination avec équipes opérationnelles et management</li>
-          <li>Diagnostic des processus métiers et identification des axes d'amélioration</li>
-          <li>Élaboration de recommandations stratégiques avec roadmap de mise en œuvre</li>
-          <li>Présentation des conclusions aux parties prenantes et validation du plan d'action</li>
+          <li>Analyse diagnostic processus métiers avec méthodologies structurées</li>
+          <li>Identification quantification opportunités amélioration</li>
+          <li>Élaboration recommandations stratégiques avec roadmap implémentation</li>
+          <li>Présentation executive stakeholders et validation plan d'action</li>
+          <li>Gestion projet autonome respectant délais et standards qualité</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- Certifications & Formations -->
+    <section class="section" id="certifications">
+      <h2>Certifications & Formations</h2>
+      <p class="section-subtitle">Formations continues et certifications professionnelles</p>
+      
+      <div class="certifications-grid">
+        <div class="certification-card">
+          <h4>🎓 Diplôme d'Ingénieur d'État</h4>
+          <p><strong>ESITH, Maroc</strong><br/>Informatique & Management Systèmes<br/>2022-2025</p>
+        </div>
+        
+        <div class="certification-card">
+          <h4>💼 Advanced Python pour ERP</h4>
+          <p>Développement scripts Odoo avancés<br/>Programmation orientée objet<br/>Certification complétée</p>
+        </div>
+        
+        <div class="certification-card">
+          <h4>📊 SQL & Data Management</h4>
+          <p>Requêtes avancées, optimisations<br/>Business Intelligence basics<br/>Certification en cours</p>
+        </div>
+        
+        <div class="certification-card">
+          <h4>🔧 Odoo Functional Expert</h4>
+          <p>Configuration modules avancée<br/>Workflows et automatisations<br/>Certification en préparation</p>
+        </div>
+
+        <div class="certification-card">
+          <h4>📈 Agile & Scrum</h4>
+          <p>Méthodologies agiles<br/>Gestion projets Scrum<br/>JIRA & Outils collaboration</p>
+        </div>
+
+        <div class="certification-card">
+          <h4>🌐 Workday HCM Concepts</h4>
+          <p>Systèmes d'information RH<br/>Architecture SIRH<br/>Processus HCM end-to-end</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Langues -->
+    <section class="section" id="languages">
+      <h2>Langues & Communication</h2>
+      <p class="section-subtitle">Maîtrise multilingue facilitant collaboration internationale</p>
+      
+      <div class="languages-grid">
+        <div class="language-card">
+          <h4>🇫🇷 Français</h4>
+          <p class="language-level">Professionnel - Courant</p>
+          <p style="color: var(--text-light); font-size: 0.9em; margin-top: 10px;">Lecture, écriture, expression orale fluide. Rédaction documentation technique et spécifications.</p>
+          <div class="proficiency-bar">
+            <div class="proficiency-fill" style="width: 100%;"></div>
+          </div>
+        </div>
+        
+        <div class="language-card">
+          <h4>🇬🇧 Anglais</h4>
+          <p class="language-level">Professionnel - Courant</p>
+          <p style="color: var(--text-light); font-size: 0.9em; margin-top: 10px;">Communication clients internationaux, présentations, documentation technique.</p>
+          <div class="proficiency-bar">
+            <div class="proficiency-fill" style="width: 95%;"></div>
+          </div>
+        </div>
+        
+        <div class="language-card">
+          <h4>🇲🇦 Arabe</h4>
+          <p class="language-level">Langue Maternelle</p>
+          <p style="color: var(--text-light); font-size: 0.9em; margin-top: 10px;">Communication clients locaux, compréhension contexte culturel, négociations.</p>
+          <div class="proficiency-bar">
+            <div class="proficiency-fill" style="width: 100%;"></div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Contact -->
     <section class="section" id="contact">
       <h2>Me Contacter</h2>
+      <p class="section-subtitle">N'hésitez pas à me contacter pour discuter de vos projets ERP et initiatives de transformation digitale</p>
+      
       <div class="contact-info">
         <div class="contact-item">
-          <strong>📧</strong>
-          <div>
-            <strong>Email:</strong><br>
+          <div class="contact-item-icon">📧</div>
+          <div class="contact-item-content">
+            <span class="contact-item-label">Email</span>
             <a href="mailto:saralabiad35@gmail.com">saralabiad35@gmail.com</a>
           </div>
         </div>
+
         <div class="contact-item">
-          <strong>📱</strong>
-          <div>
-            <strong>Téléphone:</strong><br>
+          <div class="contact-item-icon">📱</div>
+          <div class="contact-item-content">
+            <span class="contact-item-label">Téléphone</span>
             <a href="tel:+212655623218">+212 655-623-218</a>
           </div>
         </div>
+
         <div class="contact-item">
-          <strong>💼</strong>
-          <div>
-            <strong>LinkedIn:</strong><br>
+          <div class="contact-item-icon">💼</div>
+          <div class="contact-item-content">
+            <span class="contact-item-label">LinkedIn</span>
             <a href="https://www.linkedin.com/in/sara-labiad" target="_blank">linkedin.com/in/sara-labiad</a>
           </div>
         </div>
+
         <div class="contact-item">
-          <strong>🌐</strong>
-          <div>
-            <strong>GitHub:</strong><br>
+          <div class="contact-item-icon">🌐</div>
+          <div class="contact-item-content">
+            <span class="contact-item-label">GitHub</span>
             <a href="https://github.com/SaraLabiad" target="_blank">github.com/SaraLabiad</a>
           </div>
         </div>
+
         <div class="contact-item">
-          <strong>📍</strong>
-          <div>
-            <strong>Localisation:</strong><br>
-            Casablanca, Morocco (GMT+1)
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-content">
+            <span class="contact-item-label">Localisation</span>
+            <a>Casablanca, Maroc (GMT+1)</a>
           </div>
         </div>
+
         <div class="contact-item">
-          <strong>🎓</strong>
-          <div>
-            <strong>Formation:</strong><br>
-            Ingénieur d'État - ESITH
+          <div class="contact-item-icon">🎓</div>
+          <div class="contact-item-content">
+            <span class="contact-item-label">Formation</span>
+            <a>Ingénieur d'État - ESITH 2025</a>
           </div>
         </div>
       </div>
     </section>
   </div>
 
-  <button class="scroll-top" id="scrollTop">↑</button>
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Sara Labiad | Consultante Fonctionnelle ERP & Analyste Systèmes</p>
-    <p style="margin-top: 10px; opacity: 0.8;">Spécialisée en Transformation Digitale & Systèmes d'Information</p>
+    <p>Spécialisée en Transformation Digitale, Implémentation Odoo & Systèmes d'Information</p>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/sara-labiad" target="_blank">LinkedIn</a>
+      <a href="https://github.com/SaraLabiad" target="_blank">GitHub</a>
+      <a href="mailto:saralabiad35@gmail.com">Email</a>
+    </div>
   </footer>
 
   <script>
-    // Scroll reveal animation
+    // Smooth scroll reveal animation
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
+      threshold: 0.15,
+      rootMargin: '0px 0px -80px 0px'
     };
 
     const observer = new IntersectionObserver(function(entries) {
@@ -1026,20 +1602,40 @@
       observer.observe(section);
     });
 
-    // Navbar scroll effect
+    // Navbar scroll effect and active link
     const navbar = document.getElementById('navbar');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    
     window.addEventListener('scroll', () => {
+      // Navbar effect
       if (window.scrollY > 100) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
       }
+
+      // Update active link
+      let current = '';
+      document.querySelectorAll('section').forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+          link.classList.add('active');
+        }
+      });
     });
 
     // Scroll to top button
     const scrollTopBtn = document.getElementById('scrollTop');
+    
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
+      if (window.scrollY > 400) {
         scrollTopBtn.classList.add('visible');
       } else {
         scrollTopBtn.classList.remove('visible');
@@ -1059,7 +1655,7 @@
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          const offsetTop = target.offsetTop - 80;
+          const offsetTop = target.offsetTop - 100;
           window.scrollTo({
             top: offsetTop,
             behavior: 'smooth'
@@ -1067,7 +1663,13 @@
         }
       });
     });
+
+    // Preload optimizations
+    window.addEventListener('load', () => {
+      document.querySelectorAll('a[target="_blank"]').forEach(link => {
+        link.rel = 'noopener noreferrer';
+      });
+    });
   </script>
 </body>
 </html>
-
